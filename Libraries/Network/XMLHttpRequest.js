@@ -249,7 +249,11 @@ class XMLHttpRequest extends EventTarget(...XHR_EVENTS) {
         } else if (this._response === '') {
           this._cachedResponse = null;
         } else {
-          throw new Error(`Invalid response for blob: ${this._response}`);
+          if (this._response === '')  {
+            this._cachedResponse = null;
+          } else {
+            throw new Error(`Invalid response for blob: ${this._response}`);
+          }
         }
         break;
 
